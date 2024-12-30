@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Study Quest Experiment - Homepage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <nav>
+            <div class="left-nav">
+                <span id="coins">Coins: 0</span>
+                <span id="cash">Cash: $0</span>
+                <span id="level">Level: 1</span>
+                <span id="streak">Streak: 0</span>
+            </div>
+            <div class="right-nav">
+                <a href="index.html">Homepage</a>
+                <a href="shop.html">Shop</a>
+                <a href="quotes.html">Quotes</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+        </nav>
+
+        <div id="xp-bar">
+            <div id="xp-progress"></div>
+            <span id="xp-value">0/100 XP</span>
+        </div>
+
+        <div id="dashboard">
+            <div class="stats-container">
+                <h2>Today's Stats</h2>
+                <div id="today-stats">
+                    <p>Minutes Studied: 0 minutes</p>
+                    <p>Pages Read: 0 pages</p>
+                    <p>PowerPoint Slides Read: 0 slides</p>
+                    <p>Video Minutes Watched: 0 minutes</p>
+                    <p>Notes Written: 0 words</p>
+                    <p>Questions Answered: 0 questions</p>
+                </div>
+            </div>
+            <div class="stats-container">
+                <h2>Total Stats</h2>
+                <div id="total-stats">
+                    <p>Minutes Studied: 0 minutes</p>
+                    <p>Pages Read: 0 pages</p>
+                    <p>PowerPoint Slides Read: 0 slides</p>
+                    <p>Video Minutes Watched: 0 minutes</p>
+                    <p>Notes Written: 0 words</p>
+                    <p>Questions Answered: 0 questions</p>
+                </div>
+            </div>
+        </div>
+
+        <button id="study-button">Input Study Session</button>
+
+        <div id="popup" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Study Session Details</h2>
+                <form id="study-form">
+                    <label for="minutes">Minutes Studied:</label>
+                    <input type="number" id="minutes" name="minutes" value="0" required><br><br>
+                
+                    <label for="difficulty">Difficulty (1-5):</label>
+                    <input type="range" id="difficulty" name="difficulty" min="1" max="5" value="1" list="tickmarks" required>
+                    <datalist id="tickmarks">
+                      <option value="1"></option>
+                      <option value="2"></option>
+                      <option value="3"></option>
+                      <option value="4"></option>
+                      <option value="5"></option>
+                    </datalist><br><br>
+                
+                    <label for="focus">Focus Level (1-5):</label>
+                    <input type="range" id="focus" name="focus" min="1" max="5" value="1" list="tickmarks" required>
+                    <datalist id="tickmarks">
+                      <option value="1"></option>
+                      <option value="2"></option>
+                      <option value="3"></option>
+                      <option value="4"></option>
+                      <option value="5"></option>
+                    </datalist><br><br>
+                
+                    <label for="pages">Pages Read:</label>
+                    <input type="number" id="pages" name="pages" value="0"><br><br>
+                
+                    <label for="slides">PowerPoint Slides Read:</label>
+                    <input type="number" id="slides" name="slides" value="0"><br><br>
+                
+                    <label for="videoMinutes">Video Minutes Watched:</label>
+                    <input type="number" id="videoMinutes" name="videoMinutes" value="0"><br><br>
+                
+                    <label for="notes">Notes Written (Words):</label>
+                    <input type="number" id="notes" name="notes" value="0"><br><br>
+
+                    <label for="questions">Questions Answered:</label>
+                    <input type="number" id="questions" name="questions" value="0"><br><br>
+                
+                    <button type="button" onclick="calculateRewards()">Calculate Rewards</button>
+                    <div id="rewards"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="shared.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

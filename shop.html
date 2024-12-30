@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Study Quest Experiment - Shop</title>
+    <link rel="stylesheet" href="style.css">
+<style>
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 12px; /* Increased height for thicker track */
+    background: linear-gradient(to right, #444, #555);
+    outline: none;
+    opacity: 0.9;
+    border-radius: 6px; /* Adjust border-radius to match height */
+    margin: 15px 0 20px;
+    cursor: pointer;
+}
+
+input[type="range"]:hover {
+    opacity: 1;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px; /* Increased thumb size */
+    height: 20px;
+    border-radius: 50%;
+    background: #66bb6a;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 0 2px #333;
+    transition: transform 0.1s ease-in-out;
+    transform: translateY(-25%);
+}
+input[type="range"]:active::-webkit-slider-thumb{
+    transform: translateY(-25%) scale(1.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #66bb6a;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 0 2px #333;
+    transition: transform 0.1s ease-in-out;
+    transform: translateY(-50%);
+}
+input[type="range"]:active::-moz-range-thumb{
+    transform: translateY(-50%) scale(1.2);
+}
+
+/* Fill Effect */
+input[type="range"]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    height: 12px; /* Match track height */
+    background: transparent;
+    position: relative;
+}
+
+input[type="range"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 12px; /* Match track height */
+    background: #66bb6a;
+    border-radius: 6px; /* Match border-radius */
+    z-index: 1;
+    width: calc(var(--value, 0) * 10%);
+}
+input[type="range"]::-moz-range-track {
+    background: transparent;
+    border-radius: 6px;
+    height: 12px;
+}
+
+input[type="range"]::-moz-range-progress {
+    background-color: #66bb6a;
+    height: 12px;
+    border-radius: 6px;
+}
+
+/* Markers on the track */
+input[type="range"] {
+    background-image:
+        linear-gradient(to right, #777 3px, transparent 3px), /* Vertical lines */
+        linear-gradient(to right, #555, #444); /* Track background */
+    background-size: calc(100%/9) 100%, 100% 100%; /* Adjust 4 for number of markers - 1 */
+    background-repeat: repeat-x, no-repeat;
+}
+</style>
+</head>
+<body>
+    <script src="shared.js" defer></script>
+    <script src="shop.js" defer></script>
+
+    <div id="shop-container">
+        
+        <nav>
+            <div class="left-nav">
+                <span id="coins">Coins: 0</span>
+                <span id="cash">Cash: $0</span>
+                <span id="level">Level: 1</span>
+                <span id="streak">Streak: 0</span>
+            </div>
+            <div class="right-nav">
+                <a href="index.html">Homepage</a>
+                <a href="shop.html">Shop</a>
+                <a href="quotes.html">Quotes</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+        </nav>
+        
+        <!--
+        <h1>Shop</h1>
+        -->
+
+        <div id="shop-items"></div>
+
+        <button id="open-create-popup">Create New Item</button>
+
+        <div id="create-item-popup" class="modal">
+            <div class="modal-content">
+                <span class="close-button" id="close-create-popup">&times;</span>
+                <h2>Create New Item</h2>
+                <form id="item-form">
+                    <label for="item-name">Item Name:</label>
+                    <input type="text" id="item-name" required><br><br>
+
+                    <label for="time">Time (minutes):</label>
+                    <input type="number" id="time" min="1" required><br><br>
+
+                    <label for="energy">Energy (1-10):</label>
+                    <input type="range" id="energy" min="1" max="10" value="5"><br><br>
+
+                    <button type="submit" id="create-item-button">Create Item</button>
+                </form>
+            </div>
+        </div>
+        <div id="edit-item-popup" class="modal">
+            <div class="modal-content">
+                <span class="close-button" id="close-edit-popup">&times;</span>
+                <h2>Edit Item</h2>
+                <form id="edit-item-form">
+                    <input type="hidden" id="edit-item-id">
+                    <label for="edit-item-name">Item Name:</label>
+                    <input type="text" id="edit-item-name" required><br><br>
+
+                    <label for="edit-time">Time (minutes):</label>
+                    <input type="number" id="edit-time" min="1" required><br><br>
+
+                    <label for="edit-energy">Energy (1-10):</label>
+                    <input type="range" id="edit-energy" min="1" max="10" value="5"><br><br>
+
+                    <button type="submit" id="save-item-button">Save Changes</button>
+                    <button type="button" id="delete-item-button">Delete Item</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

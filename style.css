@@ -1,0 +1,379 @@
+body {
+    background: #121212;
+    font-family: sans-serif;
+    color: #eee;
+    margin: 0;
+    line-height: 1.6;
+}
+
+#container, #shop-container { /* Apply container styles to both */
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #fff;
+}
+
+.left-nav span {
+    margin-right: 20px;
+    color: #ddd;
+}
+
+#xp-bar {
+    width: 100%;
+    height: 25px;
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#xp-progress {
+    height: 100%;
+    width: 0%;
+    background-color: #4CAF50;
+    transition: width 0.3s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#xp-value {
+    position: relative;
+    transform: none;
+    color: #eee;
+    font-weight: 500;
+    z-index: 2;
+}
+
+#dashboard {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.stats-container {
+    width: 48%;
+    border: 1px solid #333;
+    padding: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.stats-container p {
+    margin: 5px 0;
+}
+
+#dashboard h2 {
+    color: #ddd;
+    margin-top: 0;
+}
+
+/* Modal Styles (Shared) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow: auto; /* Allow scrolling on background if modal is taller than viewport */
+}
+
+.modal-content {
+    background-color: #212121;
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+    position: fixed; /* Key for top centering */
+    top: 20px;     /* Position from the top */
+    left: 50%;
+    transform: translateX(-50%); /* Horizontal centering */
+    max-height: 90vh; /* Prevents modal from overflowing viewport */
+    overflow-y: auto; /* Adds scrollbar if content overflows */
+}
+
+.close-button {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ddd;
+}
+
+/* Scrollbar Styling (WebKit) */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+/* Scrollbar Styling (Firefox) */
+.modal-content {
+    scrollbar-width: thin;
+    scrollbar-color: #333 #1e1e1e;
+}
+
+.close-button {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ddd;
+}
+
+/* Form Styles (Shared) */
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ddd;
+}
+
+input[type="number"],
+
+input[type="text"] { /* Apply to text inputs as well */
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #282828;
+    border: 1px solid #333;
+    color: #eee;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 12px; /* Increased height for thicker track */
+    background: linear-gradient(to right, #444, #555);
+    outline: none;
+    opacity: 0.9;
+    border-radius: 6px; /* Adjust border-radius to match height */
+    margin: 15px 0 20px;
+    cursor: pointer;
+}
+
+input[type="range"]:hover {
+    opacity: 1;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px; /* Increased thumb size */
+    height: 20px;
+    border-radius: 50%;
+    background: #66bb6a;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 0 2px #333;
+    transition: transform 0.1s ease-in-out;
+    transform: translateY(-50%);
+}
+input[type="range"]:active::-webkit-slider-thumb{
+    transform: translateY(-50%) scale(1.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #66bb6a;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 0 2px #333;
+    transition: transform 0.1s ease-in-out;
+    transform: translateY(-50%);
+}
+input[type="range"]:active::-moz-range-thumb{
+    transform: translateY(-50%) scale(1.2);
+}
+
+/* Fill Effect */
+input[type="range"]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    height: 12px; /* Match track height */
+    background: transparent;
+    position: relative;
+}
+
+input[type="range"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 12px; /* Match track height */
+    background: #66bb6a;
+    border-radius: 6px; /* Match border-radius */
+    z-index: 1;
+    width: calc(var(--value, 0) * 10%);
+}
+input[type="range"]::-moz-range-track {
+    background: transparent;
+    border-radius: 6px;
+    height: 12px;
+}
+
+input[type="range"]::-moz-range-progress {
+    background-color: #66bb6a;
+    height: 12px;
+    border-radius: 6px;
+}
+
+/* Markers on the track */
+input[type="range"] {
+    background-image:
+        linear-gradient(to right, #777 3px, transparent 3px), /* Vertical lines */
+        linear-gradient(to right, #555, #444); /* Track background */
+    background-size: calc(100%/4) 100%, 100% 100%; /* Adjust 4 for number of markers - 1 */
+    background-repeat: repeat-x, no-repeat;
+}
+
+button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    display: block; /* Important for margin: 0 auto to work */
+    margin: 20px auto; /* Centers horizontally and adds top/bottom margin */
+    width: fit-content; /* Adjusts width to content */
+    min-width: 150px; /* Prevents button from becoming too small */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Shop Specific Styles */
+#shop-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
+
+.shop-item {
+    border: 1px solid #333; /* Darker border */
+    padding: 15px; /* Increased padding */
+    border-radius: 5px;
+    background-color: #1e1e1e; /* Darker background */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    transition: transform 0.2s;
+}
+.shop-item:hover{
+    transform: scale(1.02);
+}
+.shop-item h3{
+    margin-top: 0;
+}
+
+#quotes-container {
+    display: flex; /* Use flexbox for easy layout */
+    flex-direction: column; /* Stack quotes vertically */
+    align-items: center; /* Center horizontally */
+    gap: 20px; /* Add spacing between quotes */
+    margin-top: 20px;
+}
+
+.quote {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%; /* Adjust width as needed */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+    border-right: 5px solid #4CAF50; /* لون مميز للحد الأيمن */
+}
+
+.quote .author {
+    text-align: right;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.quote p {
+    font-family: 'Noto Sans Arabic', sans-serif;
+    font-size: 1.2em; /* Adjust as needed */
+    line-height: 1.8; /* Adjust as needed */
+    font-weight: 600; /* Or 600 for even bolder */
+}
+
+.quote:hover {
+    transform: scale(1.02);
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+}
+.quote p {
+    font-size: 1.15em;
+    text-align: justify; /* ضبط النص */
+    word-wrap: break-word; /* منع الكلمات الطويلة من الخروج عن الإطار */
+}
+.quote .author {
+    text-align: left;
+    font-style: italic;
+    color: #777;
+    margin-top: 10px; /* مسافة بين النص والمؤلف */
+
+}
+
+#faq-container {
+    margin-top: 20px;
+}
+
+.faq-item {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.faq-item h2 {
+    margin-bottom: 5px;
+}   

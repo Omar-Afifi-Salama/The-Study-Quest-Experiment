@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Study Quest Experiment - FAQ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <nav>
+            <div class="left-nav">
+                <span id="coins">Coins: 0</span>
+                <span id="cash">Cash: $0</span>
+                <span id="level">Level: 1</span>
+                <span id="streak">Streak: 0</span>
+            </div>
+            <div class="right-nav">
+                <a href="index.html">Homepage</a>
+                <a href="shop.html">Shop</a>
+                <a href="quotes.html">Quotes</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+        </nav>
+        <h1>Frequently Asked Questions</h1>
+        <div id="faq-container">
+
+            <div class="faq-item">
+                <h2>What is The Study Quest Experiment?</h2>
+                <p>Study Gamified is a website designed to make studying more engaging and rewarding by incorporating game-like elements such as points, levels, and streaks. It helps you track your study progress and motivates you to achieve your learning goals.</p>
+            </div>
+
+            <div class="faq-item">
+                <h2>How do I earn rewards?</h2>
+                <p>You earn rewards by logging your study sessions and completing different study activities. The more you study and the higher the difficulty and focus of your sessions, the more rewards you earn.</p>
+            </div>
+
+            <div class="faq-item">
+                <h2>What are coins and cash used for?</h2>
+                <p>We believe in rewarding hard work! That's why we've introduced coins, a virtual currency you earn by studying. Think of coins as your personal reward system. You can use them to "buy" virtual treats and breaks within the site, giving you a fun and motivating way to take well-deserved breaks and stay focused on your studies. Cash is a separate currency that we may use for different features in the future.</p>
+            </div>
+
+            <div class="faq-item">
+                <h2>How is XP (Experience Points) calculated?</h2>
+                <p>XP is calculated based on the duration of your study sessions, the difficulty level you choose, and your focus level. Completing other activities like reading pages, slides, or writing notes also contributes to your XP gain.</p>
+            </div>
+
+            <div class="faq-item">
+                <h2>What is a study streak?</h2>
+                <p>A study streak is a record of consecutive days you've studied. Maintaining a streak earns you bonus rewards and motivates you to study consistently.</p>
+            </div>
+
+            <div class="faq-item">
+                <h2>How do I reset my stats?</h2>
+                <p>Your "Today's Stats" are automatically reset at the start of each new day. Your "Total Stats" accumulate over time and are not automatically reset.</p>
+            </div>
+
+            <div class="faq-item">
+                <h2>Is my study data private?</h2>
+                <p>Yes, your study data is stored locally in your browser's local storage. This means it's only accessible on your device and is not shared with the website server (unless you implement a server-side saving feature). Clearing your browser's data will also clear your study data.</p>
+            </div>
+
+            <div class="faq-item">
+                <h2>What if I encounter a bug or have a suggestion?</h2>
+                <p>If you find any bugs or have suggestions for improvements, please contact us. Your feedback is valuable in helping us improve Study Gamified.</p>
+            </div>
+
+            <div class="faq-item">
+                <h2>Can I use Study Gamified on my mobile device?</h2>
+                <p>Yes, Study Gamified is designed to be responsive, meaning it should adapt to different screen sizes and work well on both desktop and mobile devices. However, some features might have a slightly different layout on smaller screens.</p>
+            </div>
+
+            <div class="faq-item">
+                <h2>Is Study Gamified free to use?</h2>
+                <p>Yes, Study Gamified is currently free to use.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <button id="download-data-button">Download Study Data (CSV)</button>
+
+    <script src="shared.js"></script>
+    <script src="main.js"></script>
+    <script>
+        function downloadCSV(csvData) {
+            const csvBlob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+            const csvURL = URL.createObjectURL(csvBlob);
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = csvURL;
+            downloadLink.download = `study_data_${new Date().getTime()}.csv`; // Unique filename
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            URL.revokeObjectURL(csvURL); // Clean up
+        }
+    </script>
+</body>
+</html>
